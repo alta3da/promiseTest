@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Promise Template dgdgfgdg</title>
+
+    
+  </head>
+  <body>
+    
+    <div id="out"></div>
+    <br>
+    <div id="out2"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+       
+    <script>
+
+      
+
+
+function applyForVisa(docs){
+
+    $('#out').text('Ожидание получения визы...');
+
+    let visa = new Promise(function(resolve, reject){
+
+      setTimeout(function(){          
+
+          Math.random()>0.3?resolve(docs + ' получена'):reject(docs + ' НЕ получена');       
+
+      }, 2000);    
+
+    });
+
+    return visa;
+}
+
+function buyTickets(booking){
+
+  $('#out2').text('Ожидание пронирования билетов...');
+
+  let tickets = new Promise(function(resolve, reject){
+
+    setTimeout(function(){     
+      
+      Math.random()>0.3?resolve(booking + ' подтверждена'):reject(booking + ' НЕ подтверждена');
+
+    },2000);
+
+  });
+
+  return tickets;
+
+}
+
+function bookHotel(){
+
+
+}
+
+applyForVisa('Виза')
+  .then(function(visa){
+    
+    $('#out').text(visa);
+
+    buyTickets('Бронь')
+    .then(
+          function(tickets){
+          $('#out2').text(tickets);
+          },          
+          function(reason){
+              $('#out2').text(reason);
+          })  
+      }
+    , function(reason){
+      $('#out').text(reason);
+      $('#out').css({'color':'red'});
+    });
+
+
+
+
+
+</script>
+
+
+  </body>
+</html>

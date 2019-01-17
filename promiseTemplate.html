@@ -32,9 +32,9 @@ function applyForVisa(docs){
 
       setTimeout(function(){          
 
-          Math.random()>0.5?resolve(docs + ' получена'):reject(docs + ' НЕ получена');       
+          Math.random()>0.3?resolve(docs + ' получена'):reject(docs + ' НЕ получена');       
 
-      }, 2000);    
+      }, 1000);    
 
     });
 
@@ -49,9 +49,9 @@ function buyTickets(booking){
 
     setTimeout(function(){     
       
-      Math.random()>0.5?resolve(booking + ' подтверждена'):reject(booking + ' НЕ подтверждена');
+      Math.random()>0.3?resolve(booking + ' подтверждена'):reject(booking + ' НЕ подтверждена');
 
-    },2000);
+    },1000);
 
   });
 
@@ -67,9 +67,9 @@ function bookHotel(booking){
 
   setTimeout(function(){     
     
-    Math.random()>0.5?resolve(booking + ' подтвержден'):reject(booking + ' НЕ подтвержден');
+    Math.random()>0.3?resolve(booking + ' подтвержден'):reject(booking + ' НЕ подтвержден');
 
-  },2000);
+  },1000);
 
   });
 
@@ -90,7 +90,6 @@ applyForVisa('Виза')
           bookHotel('Отель')
           .then(function(hotel){
             $('#out3').text(hotel);
-
             
             $('#out4').text('Приятного отпуска!');
           },

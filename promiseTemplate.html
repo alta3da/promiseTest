@@ -92,6 +92,10 @@ applyForVisa('Виза')
             $('#out3').text(hotel);
             
             $('#out4').text('Приятного отпуска!');
+            $('#out4').css({
+              'color':'blue',
+              'font-weight':'bold'
+              });
           },
           function(reason){
             $('#out3').text(reason);

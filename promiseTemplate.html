@@ -54,8 +54,21 @@ function buyTickets(booking){
 
 }
 
-function bookHotel(){
+function bookHotel(booking){
 
+  $('#out2').text('Ожидание пронирования билетов...');
+
+  let hotel = new Promise(function(resolve, reject){
+
+  setTimeout(function(){     
+    
+    Math.random()>0.3?resolve(booking + ' подтвержден'):reject(booking + ' НЕ подтвержден');
+
+  },2000);
+
+  });
+
+  return hotel;
 
 }
 
@@ -68,6 +81,9 @@ applyForVisa('Виза')
     .then(
           function(tickets){
           $('#out2').text(tickets);
+
+          bookHotel('Отель')
+          .then()
           },          
           function(reason){
               $('#out2').text(reason);

@@ -14,6 +14,9 @@
     <div id="out"></div>
     <br>
     <div id="out2"></div>
+    <br>
+    <div id="out3"></div>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
        
@@ -38,13 +41,13 @@ function applyForVisa(docs){
 
 function buyTickets(booking){
 
-  $('#out2').text('Ожидание пронирования билетов...');
+  $('#out2').text('Ожидание бронирования билетов самолета...');
 
   let tickets = new Promise(function(resolve, reject){
 
     setTimeout(function(){     
       
-      Math.random()>0.3?resolve(booking + ' подтверждена'):reject(booking + ' НЕ подтверждена');
+      Math.random()>0?resolve(booking + ' подтверждена'):reject(booking + ' НЕ подтверждена');
 
     },2000);
 
@@ -56,13 +59,13 @@ function buyTickets(booking){
 
 function bookHotel(booking){
 
-  $('#out2').text('Ожидание пронирования билетов...');
+  $('#out3').text('Ожидание бронирования отеля...');
 
   let hotel = new Promise(function(resolve, reject){
 
   setTimeout(function(){     
     
-    Math.random()>0.3?resolve(booking + ' подтвержден'):reject(booking + ' НЕ подтвержден');
+    Math.random()>0?resolve(booking + ' подтвержден'):reject(booking + ' НЕ подтвержден');
 
   },2000);
 
@@ -83,7 +86,12 @@ applyForVisa('Виза')
           $('#out2').text(tickets);
 
           bookHotel('Отель')
-          .then()
+          .then(function(hotel){
+            $('#out3').text(hotel);
+          },
+          function(reason){
+            $('#out3').text(reason);
+          })
           },          
           function(reason){
               $('#out2').text(reason);
